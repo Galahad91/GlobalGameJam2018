@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class WebRaycast : MonoBehaviour
 {
-    public List<GameObject> webs;
+    public List<SpiderString> webs;
     public List<GameObject> spiderWebs;
     public GameObject spiderWeb;
     public GameObject cameraMain;
+    GameObject start;
+    GameObject end;
+    public int clickCount;
 	
 	void Start ()
     {
-        webs = new List<GameObject>();
+        webs = new List<SpiderString>();
         spiderWebs = new List<GameObject>();
     }
 	
 	void Update ()
     {
-        if (webs.Count > 1)
-        {
-            for (int i = 0; i < webs.Count; i++)
-            {
-                if (i > 0)
-                {
-                    Physics.Raycast(webs[i - 1].transform.position, (webs[i-1].transform.position - webs[i].transform.position));
-                    //webs[i - 1].GetComponent<LineRenderer>().SetPosition(0, webs[i - 1].transform.position);
-                    //webs[i - 1].GetComponent<LineRenderer>().SetPosition(1, webs[i].transform.position);
-                    Debug.DrawRay(webs[i].transform.position, (webs[i-1].transform.position - webs[i].transform.position), Color.red);
-                }              
-            }
-        }
+        //if (webs.Count > 1)
+        //{
+        //    for (int i = 0; i < webs.Count; i++)
+        //    {
+        //        if (i > 0)
+        //        {
+                                                
+        //        }              
+        //    }
+        //}
 
         if(Input.GetMouseButtonDown(0))
         {
@@ -42,8 +42,28 @@ public class WebRaycast : MonoBehaviour
                     //webs.Add(Instantiate(webNode, hit.point, Quaternion.identity));  
 
                     spiderWebs.Add(Instantiate(spiderWeb, hit.transform));
+
                     Debug.Log(hit.transform);
-                    webs.Add(hit.transform.gameObject);
+                    if (clickCount == 0)
+                    {
+                        start = hit.transform.gameObject;
+                        clickCount++;                      
+                    }
+                    else if(clickCount == 1)
+                    {
+                        end = hit.transform.gameObject;
+                        SpiderString webString = new SpiderString(start,end);
+                        webs.Add(webString);
+                        clickCount++;
+                    }
+                    else
+                    {
+                        start = end;
+                        end = hit.transform.gameObject;
+                        SpiderString webString = new SpiderString(start, end);
+                        webs.Add(webString);
+                        clickCount++;
+                    }
                 }          
             }
         }

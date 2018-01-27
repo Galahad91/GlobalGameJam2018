@@ -78,11 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MouseOver.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameplayPhases\EnemyWavesPhase.cs" />
     <Compile Include="Assets\Scripts\GameplayPhases\PreparationPhase.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\MouseOver.cs" />
     <Compile Include="Assets\Scripts\SpiderString.cs" />
     <Compile Include="Assets\Scripts\WebRaycast.cs" />
   </ItemGroup>
