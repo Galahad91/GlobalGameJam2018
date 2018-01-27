@@ -139,6 +139,7 @@ MonoBehaviour:
   spiderWebs: []
   spiderWeb: {fileID: 1240979565897684, guid: 73fe9844f637841459f47fd581f34c27, type: 2}
   cameraMain: {fileID: 1244499750}
+  clickCount: 0
 --- !u!4 &354064071
 Transform:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4186064143546946, guid: 7929280bc78b82542bc01c2bd933a361, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.57
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4186064143546946, guid: 7929280bc78b82542bc01c2bd933a361, type: 2}
       propertyPath: m_LocalPosition.y
