@@ -32,6 +32,16 @@ public class SpiderString : MonoBehaviour {
         toJoint = to.transform.position;
     }
 
+
+    public void buildString ()
+    {
+        Physics.Raycast(fromJoint, (fromJoint - toJoint));
+        Debug.DrawRay(fromJoint, (fromJoint - toJoint), Color.red);
+
+        //webs[i - 1].GetComponent<LineRenderer>().SetPosition(0, webs[i - 1].transform.position);
+        //webs[i - 1].GetComponent<LineRenderer>().SetPosition(1, webs[i].transform.position);
+    }
+
     void Start ()
     {
 		
