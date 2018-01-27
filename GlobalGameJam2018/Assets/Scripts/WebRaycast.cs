@@ -22,6 +22,8 @@ public class WebRaycast : MonoBehaviour
                 if (i > 0)
                 {
                     Physics.Raycast(webs[i - 1].transform.position, (webs[i-1].transform.position - webs[i].transform.position));
+                    webs[i - 1].GetComponent<LineRenderer>().SetPosition(0, webs[i - 1].transform.position);
+                    webs[i - 1].GetComponent<LineRenderer>().SetPosition(1, webs[i].transform.position);
                     Debug.DrawRay(webs[i].transform.position, (webs[i-1].transform.position - webs[i].transform.position), Color.red);
                 }           
             }
@@ -35,7 +37,7 @@ public class WebRaycast : MonoBehaviour
             {
                 if (hit.transform.tag != "WebJoint")
                 {
-                    webs.Add(Instantiate(webNode, hit.point, Quaternion.identity));
+                    webs.Add(Instantiate(webNode, hit.point, Quaternion.identity));                  
                 }          
             }
         }
