@@ -5,13 +5,15 @@ using UnityEngine;
 public class WebRaycast : MonoBehaviour
 {
     public List<GameObject> webs;
-    public GameObject webNode;
+    public List<GameObject> spiderWebs;
+    public GameObject spiderWeb;
     public GameObject cameraMain;
 	
 	void Start ()
     {
         webs = new List<GameObject>();
-	}
+        spiderWebs = new List<GameObject>();
+    }
 	
 	void Update ()
     {
@@ -22,10 +24,10 @@ public class WebRaycast : MonoBehaviour
                 if (i > 0)
                 {
                     Physics.Raycast(webs[i - 1].transform.position, (webs[i-1].transform.position - webs[i].transform.position));
-                    webs[i - 1].GetComponent<LineRenderer>().SetPosition(0, webs[i - 1].transform.position);
-                    webs[i - 1].GetComponent<LineRenderer>().SetPosition(1, webs[i].transform.position);
+                    //webs[i - 1].GetComponent<LineRenderer>().SetPosition(0, webs[i - 1].transform.position);
+                    //webs[i - 1].GetComponent<LineRenderer>().SetPosition(1, webs[i].transform.position);
                     Debug.DrawRay(webs[i].transform.position, (webs[i-1].transform.position - webs[i].transform.position), Color.red);
-                }           
+                }              
             }
         }
 
@@ -35,9 +37,13 @@ public class WebRaycast : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(cameraMain.transform.position,ray.direction, out hit))
             {
-                if (hit.transform.tag != "WebJoint")
+                if (hit.transform.tag == "WebJoint")
                 {
-                    webs.Add(Instantiate(webNode, hit.point, Quaternion.identity));                  
+                    //webs.Add(Instantiate(webNode, hit.point, Quaternion.identity));  
+
+                    spiderWebs.Add(Instantiate(spiderWeb, hit.transform));
+                    Debug.Log(hit.transform);
+                    webs.Add(hit.transform.gameObject);
                 }          
             }
         }
