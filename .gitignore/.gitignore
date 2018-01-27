@@ -4,6 +4,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/Assets/3rd\ Parties/ProCore*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -25,6 +26,7 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
+*.unitypackage.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
@@ -32,3 +34,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#PROBuilder
+Assets/3rd\ Parties/ProCore/ProBuilder/Data/ProBuilderPreferences.asset
+
+#FMOD
+*.log
+Assets/FMODStudioCache.asset
